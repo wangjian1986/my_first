@@ -1,4 +1,4 @@
-ThinkPHP 5.1dfdsfsdfdfsfdsfsf
+ThinkPHP 5.1
 ===============
 
 ThinkPHP5.1对底层架构做了进一步的改进，减少依赖，其主要特性包括：
