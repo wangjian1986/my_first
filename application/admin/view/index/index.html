@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>购低网 - CRM 管理信息系统</title>
+    {load href="/static/layui/css/layui.css" /}
+    {load href="/static/js/jquery-3.3.1.min.js" /}
+    <style>
+        .layui-side-scroll ul li dd {padding-left: 20px;}
+        .layui-side-scroll ul li dd:hover{background: #e08888;}
+
+    </style>
+</head>
+<body class="layui-layout-body" >
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo" id="shijian" style="font-size: 12px;">
+        <script>
+            setInterval("shijian.innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",1000);
+        </script>
+    </div>
+
+    <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item"><a href="">欢迎您: w&j</a></li>
+        <li class="layui-nav-item"><a href="">本次是第 3 次登录</a></li>
+        <li class="layui-nav-item"><a href="">当前登录IP: </a></li>
+        <li class="layui-nav-item"><a href="">登录位置: </a></li>
+        <li class="layui-nav-item"><a href="">清空缓存: </a></li>
+      <!-- <li class="layui-nav-item">
+        <a href="javascript:;">其它系统</a>
+        <dl class="layui-nav-child">
+          <dd><a href="">邮件管理</a></dd>
+          <dd><a href="">消息管理</a></dd>
+          <dd><a href="">授权管理</a></dd>
+        </dl>
+      </li> -->
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+          贤心
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="">修改密码</a></dd>
+          <dd><a href=""></a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a href="/admin/Login/loginOut">退出登录</a></li>
+    </ul>
+  </div>
+
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">系统详情</a>
+          <dl class="layui-nav-child">
+            <dd><a href="/admin/Index/systemInfo" target="content">系统信息</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">用户管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="/admin/User/index">用户列表</a></dd>
+            <dd><a href="javascript:;">角色管理</a></dd>
+            <dd><a href="javascript:;">权限管理</a></dd>
+            <!-- <dd><a href="">超链接</a></dd> -->
+          </dl>
+        </li>
+
+        <li class="layui-nav-item">
+          <a href="javascript:;">系统管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">站点设置</a></dd>
+            <dd><a href="javascript:;">模块管理</a></dd>
+            <dd><a href="javascript:;">IP管理</a></dd>
+            <dd><a href="javascript:;">下拉菜单</a></dd>
+            <!-- <dd><a href="">超链接</a></dd> -->
+          </dl>
+        </li>
+
+        <li class="layui-nav-item">
+          <a href="javascript:;">日志管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">登录日志</a></dd>
+            <dd><a href="javascript:;">操作日志</a></dd>
+            <!-- <dd><a href="">超链接</a></dd> -->
+          </dl>
+        </li>
+
+        <li class="layui-nav-item">
+          <a href="javascript:;">文件管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">图片管理</a></dd>
+            <dd><a href="javascript:;">文件管理</a></dd>
+          </dl>
+        </li>
+
+        <li class="layui-nav-item">
+          <a href="javascript:;">新闻管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">栏目分类</a></dd>
+            <dd><a href="javascript:;">文章发布</a></dd>
+          </dl>
+        </li>
+
+        <li class="layui-nav-item">
+          <a href="javascript:;">客户管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">客户中心</a></dd>
+            <dd><a href="javascript:;">客户约访</a></dd>
+            <dd><a href="javascript:;">客户回收站</a></dd>
+          </dl>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+  <div class="layui-body" >
+    <div style="height:100%;">
+    <!-- 内容主体区域 -->
+    <iframe name="content" id="myiframe" scrolling="no" src="/admin/Index/systemInfo" width="100%" height="100%" frameborder="0"></iframe>
+    </div>
+  </div>
+
+  <div class="layui-footer" style="text-align: center;">
+    © 购低网 - CRM
+  </div>
+</div>
+{load href="/static/layui/layui.js" /}
+
+<script>
+    layui.use(['element','layer'], function(){
+        var element = layui.element;
+        var layer = layui.layer;
+    });
+
+
+
+
+    function changeFrameHeight(){
+        // var height = $('#myiframe').parent().height();
+        // console.log(height);
+        // $('#myiframe').attr('height',height-20);
+    }
+
+
+
+
+
+</script>
+</body>
+</html>
